@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bim.dao.SgProjectListClassMapper" >
+  <resultMap id="BaseResultMap" type="com.bim.entity.SgProjectListClass" >
+    <id column="CLAZZ_ID" property="clazzId" jdbcType="CHAR" />
+    <result column="PROJECT_ID" property="projectId" jdbcType="CHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="WORK_AREA_CODE" property="workAreaCode" jdbcType="VARCHAR" />
+    <result column="SORT" property="sort" jdbcType="INTEGER" />
+    <result column="IS_DELETED" property="isDeleted" jdbcType="BIT" />
+    <result column="CREATE_USER_ID" property="createUserId" jdbcType="CHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CLAZZ_ID, PROJECT_ID, NAME, STATUS, WORK_AREA_CODE, SORT, IS_DELETED, CREATE_USER_ID, 
+    CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_sg_project_list_class
+    where CLAZZ_ID = #{clazzId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbl_sg_project_list_class
+    where CLAZZ_ID = #{clazzId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bim.entity.SgProjectListClass" >
+    insert into tbl_sg_project_list_class (CLAZZ_ID, PROJECT_ID, NAME, 
+      STATUS, WORK_AREA_CODE, SORT, 
+      IS_DELETED, CREATE_USER_ID, CREATE_TIME
+      )
+    values (#{clazzId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{workAreaCode,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{isDeleted,jdbcType=BIT}, #{createUserId,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bim.entity.SgProjectListClass" >
+    insert into tbl_sg_project_list_class
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clazzId != null" >
+        CLAZZ_ID,
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="workAreaCode != null" >
+        WORK_AREA_CODE,
+      </if>
+      <if test="sort != null" >
+        SORT,
+      </if>
+      <if test="isDeleted != null" >
+        IS_DELETED,
+      </if>
+      <if test="createUserId != null" >
+        CREATE_USER_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clazzId != null" >
+        #{clazzId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="workAreaCode != null" >
+        #{workAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bim.entity.SgProjectListClass" >
+    update tbl_sg_project_list_class
+    <set >
+      <if test="projectId != null" >
+        PROJECT_ID = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="workAreaCode != null" >
+        WORK_AREA_CODE = #{workAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        SORT = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        IS_DELETED = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="createUserId != null" >
+        CREATE_USER_ID = #{createUserId,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where CLAZZ_ID = #{clazzId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bim.entity.SgProjectListClass" >
+    update tbl_sg_project_list_class
+    set PROJECT_ID = #{projectId,jdbcType=CHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      WORK_AREA_CODE = #{workAreaCode,jdbcType=VARCHAR},
+      SORT = #{sort,jdbcType=INTEGER},
+      IS_DELETED = #{isDeleted,jdbcType=BIT},
+      CREATE_USER_ID = #{createUserId,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+    where CLAZZ_ID = #{clazzId,jdbcType=CHAR}
+  </update>
+</mapper>
